@@ -8,32 +8,31 @@ public class TennisGame2 implements TennisGame
     public String P2res = "";
     private String player1Name;
     private String player2Name;
-    String score = "";
-    
+        
     public TennisGame2(String player1Name, String player2Name) {
         this.player1Name = player1Name;
         this.player2Name = player2Name;
     }
 
-    public String getScore(){
-        
+    public String getLiteralScore(){
+    	String literalScore = "";
     	if (isNormal())		           
-		    score = getLiteral(player1Points) + "-" + getLiteral(player2Points);		
+		    literalScore = getLiteral(player1Points) + "-" + getLiteral(player2Points);		
 		if (isTie())		    
-		    score = getLiteral(player1Points) + "-All";		
+		    literalScore = getLiteral(player1Points) + "-All";		
 		if (isDeuce())
-			score = "Deuce";
+			literalScore = "Deuce";
 		if (isInAdvantageOver(player1Points,player2Points))		
-		    score = "Advantage player1";				
+		    literalScore = "Advantage player1";				
 		if (isInAdvantageOver(player2Points,player1Points))		
-		    score = "Advantage player2";		
+		    literalScore = "Advantage player2";		
 		if (isWinnerOver( player1Points, player2Points))		
-		    score = "Win for player1";		
+		    literalScore = "Win for player1";		
 		if (isWinnerOver( player2Points,player1Points))		
-		    score = "Win for player2";
+		    literalScore = "Win for player2";
 		
       
-        return score;
+        return literalScore;
     }
 	
 	private boolean isWinnerOver(int firstPlayerPoints, int secondPlayerPoints) {
