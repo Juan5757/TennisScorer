@@ -1,11 +1,13 @@
 
 public class TennisGame2 implements TennisGame
 {
-    public int player1Points = 0;
+    private static final int _FORTY = 3;
+	private static final int _THIRTY = 2;
+	private static final int _FIFTEEN = 1;
+	private static final int _LOVE = 0;
+	public int player1Points = 0;
     public int player2Points = 0;
     
-    public String P1res = "";
-    public String P2res = "";
     private String player1Name;
     private String player2Name;
         
@@ -50,13 +52,13 @@ public class TennisGame2 implements TennisGame
 
 	private String getLiteral(int P1point) {
 		String result="";
-		if (P1point==0)
+		if (P1point==_LOVE)
 			result = "Love";
-		if (P1point==1)
+		if (P1point==_FIFTEEN)
 			result = "Fifteen";
-		if (P1point==2)
+		if (P1point==_THIRTY)
 			result = "Thirty";
-		if (P1point==3)
+		if (P1point==_FORTY)
 			result = "Forty";
 		return result;
 	}
