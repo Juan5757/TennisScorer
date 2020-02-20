@@ -95,13 +95,17 @@ public class TennisGame2 implements TennisGame
 	}
 
 	private String deuces() {
-		if (player1Points==player2Points && player1Points>=3)
+		if (isDeuce())
             score = "Deuce";
 		return score;
 	}
 
+	private boolean isDeuce() {
+		return player1Points==player2Points && player1Points>=3;
+	}
+
 	private String tie() {
-		if (player1Points == player2Points && player1Points < 4)
+		if (isTie())
         {
             if (player1Points==0)
                 score = "Love";
@@ -112,6 +116,10 @@ public class TennisGame2 implements TennisGame
             score += "-All";
         }
 		return score;
+	}
+
+	private boolean isTie() {
+		return player1Points == player2Points && player1Points < 4;
 	}
     
     public void SetP1Score(int number){
