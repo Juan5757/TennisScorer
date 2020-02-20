@@ -19,11 +19,8 @@ public class TennisGame2 implements TennisGame
         
     	if (isNormal())		           
 		    score = getLiteral(player1Points) + "-" + getLiteral(player2Points);		
-		if (isTie())
-		{
-		    score = getLiteral(player1Points);
-		    score += "-All";
-		}
+		if (isTie())		    
+		    score = getLiteral(player1Points) + "-All";		
 		if (isDeuce())
 			score = "Deuce";
 		if (isInAdvantageOver(player1Points,player2Points))		
