@@ -25,15 +25,14 @@ public class TennisGame2 implements TennisGame
 		if (isDeuce())
 			literalScore = getLiteralForDeuce();
 		if (isInAdvantageOver(player1Points,player2Points))		
-		    literalScore = getLiteralForAdvantage();				
+		    literalScore = getLiteralForAdvantage(player1Points);				
 		if (isInAdvantageOver(player2Points,player1Points))		
-		    literalScore = getLiteralForAdvantage1();		
+		    literalScore = getLiteralForAdvantage(player2Points);		
 		if (isWinnerOver( player1Points, player2Points))		
 		    literalScore = getLiteralForWinner(player1Points);		
 		if (isWinnerOver( player2Points,player1Points))		
 		    literalScore = getLiteralForWinner(player2Points);
 		
-      
         return literalScore;
     }
 
@@ -44,12 +43,11 @@ public class TennisGame2 implements TennisGame
 			return "Win for player2";
 	}
 
-	private String getLiteralForAdvantage1() {
-		return "Advantage player2";
-	}
-
-	private String getLiteralForAdvantage() {
-		return "Advantage player1";
+	private String getLiteralForAdvantage(int PlayerPoints) {
+		if(player1Points == PlayerPoints)
+			return "Advantage player1";
+		else
+			return "Advantage player2"; 
 	}
 
 	private String getLiteralForDeuce() {
