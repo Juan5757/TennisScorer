@@ -20,10 +20,6 @@ public class TennisGame2 implements TennisGame
         score = deuces(score);
         
         score = normal(score);
-        score = normal1(score);
-        
-        score = normal2(score);
-        score = normal3(score);
         
         score = advantage(score);
         
@@ -52,30 +48,6 @@ public class TennisGame2 implements TennisGame
         if (player2Points > player1Points && player1Points >= 3)
         {
             score = "Advantage player2";
-        }
-		return score;
-	}
-
-	private String normal3(String score) {
-		if (player2Points != player1Points)
-        {
-            score = getLiteral(player1Points) + "-" + getLiteral(player2Points);
-        }
-		return score;
-	}
-
-	private String normal2(String score) {
-		if (player1Points != player2Points)
-        {   
-            score = getLiteral(player1Points) + "-" + getLiteral(player2Points);
-        }
-		return score;
-	}
-
-	private String normal1(String score) {
-		if (player2Points != player1Points)
-        { 
-            score = getLiteral(player1Points) + "-" + getLiteral(player2Points);
         }
 		return score;
 	}
