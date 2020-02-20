@@ -29,20 +29,19 @@ public class TennisGame2 implements TennisGame
 		if (isInAdvantageOver(player2Points,player1Points))		
 		    literalScore = getLiteralForAdvantage1();		
 		if (isWinnerOver( player1Points, player2Points))		
-		    literalScore = getLiteralForWinner();		
+		    literalScore = getLiteralForWinner(player1Points);		
 		if (isWinnerOver( player2Points,player1Points))		
-		    literalScore = getLiteralForWinner1();
+		    literalScore = getLiteralForWinner(player2Points);
 		
       
         return literalScore;
     }
 
-	private String getLiteralForWinner1() {
-		return "Win for player2";
-	}
-
-	private String getLiteralForWinner() {
-		return "Win for player1";
+	private String getLiteralForWinner(int PlayerPoints) {
+		if(player1Points == PlayerPoints)
+			return "Win for player1";
+		else
+			return "Win for player2";
 	}
 
 	private String getLiteralForAdvantage1() {
