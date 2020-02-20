@@ -17,61 +17,37 @@ public class TennisGame2 implements TennisGame
 
     public String getScore(){
         
-    	score = normal();
-    	
-        score = tie();
-        score = deuces();
-                 
-        score = advantage();
-        
-        score = win();
+    	if (isNormal())		           
+		    score = getLiteral(player1Points) + "-" + getLiteral(player2Points);		
+		if (isTie())
+		{
+		    score = getLiteral(player1Points);
+		    score += "-All";
+		}
+		if (isDeuce())
+			score = "Deuce";
+		if (isInAdvantageOver(player1Points,player2Points))		
+		    score = "Advantage player1";				
+		if (isInAdvantageOver(player2Points,player1Points))		
+		    score = "Advantage player2";		
+		if (isWinnerOver( player1Points, player2Points))		
+		    score = "Win for player1";		
+		if (isWinnerOver( player2Points,player1Points))		
+		    score = "Win for player2";
+		
+      
         return score;
     }
-
-	private String win() {
-		if (isWinnerOver( player1Points, player2Points))
-        {
-            score = "Win for player1";
-        }
-        if (isWinnerOver( player2Points,player1Points))
-        {
-            score = "Win for player2";
-        }
-		return score;
-	}
-
 	
-
 	private boolean isWinnerOver(int firstPlayerPoints, int secondPlayerPoints) {
 		return firstPlayerPoints>=4 && secondPlayerPoints>=0 && (firstPlayerPoints-secondPlayerPoints)>=2;
 	}
 
-	private String advantage() {
-		if (isAdvantage(player1Points,player2Points))
-        {
-            score = "Advantage player1";
-        }
-        
-        if (isAdvantage(player2Points,player1Points))
-        {
-            score = "Advantage player2";
-        }
-		return score;
-	}
 
-
-	private boolean isAdvantage(int firstPlayerPoints, int secondPlayerPoints) {
+	private boolean isInAdvantageOver(int firstPlayerPoints, int secondPlayerPoints) {
 		return firstPlayerPoints > secondPlayerPoints && secondPlayerPoints >= 3;
 	}
-
-	private String normal() {
-		if (isNormal())
-        {           
-            score = getLiteral(player1Points) + "-" + getLiteral(player2Points);
-        }
-		return score;
-	}
-
+	
 	private boolean isNormal() {
 		return player1Points != player2Points;
 	}
@@ -89,25 +65,12 @@ public class TennisGame2 implements TennisGame
 		return result;
 	}
 
-	private String deuces() {
-		if (isDeuce())
-            score = "Deuce";
-		return score;
-	}
-
+	
 	private boolean isDeuce() {
 		return player1Points==player2Points && player1Points>=3;
 	}
-
-	private String tie() {
-		if (isTie())
-        {
-            score = getLiteral(player1Points);
-            score += "-All";
-        }
-		return score;
-	}
-
+	
+	
 	private boolean isTie() {
 		return player1Points == player2Points && player1Points < 4;
 	}
