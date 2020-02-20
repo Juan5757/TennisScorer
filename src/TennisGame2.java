@@ -47,24 +47,21 @@ public class TennisGame2 implements TennisGame
 	}
 
 	private String advantage() {
-		if (isAdvantage())
+		if (isAdvantage(player1Points,player2Points))
         {
             score = "Advantage player1";
         }
         
-        if (isAdvantage1())
+        if (isAdvantage(player2Points,player1Points))
         {
             score = "Advantage player2";
         }
 		return score;
 	}
 
-	private boolean isAdvantage1() {
-		return player2Points > player1Points && player1Points >= 3;
-	}
 
-	private boolean isAdvantage() {
-		return player1Points > player2Points && player2Points >= 3;
+	private boolean isAdvantage(int firstPlayerPoints, int secondPlayerPoints) {
+		return firstPlayerPoints > secondPlayerPoints && secondPlayerPoints >= 3;
 	}
 
 	private String normal() {
