@@ -29,36 +29,56 @@ public class TennisGame2 implements TennisGame
     }
 
 	private String win() {
-		if (player1Points>=4 && player2Points>=0 && (player1Points-player2Points)>=2)
+		if (isWin())
         {
             score = "Win for player1";
         }
-        if (player2Points>=4 && player1Points>=0 && (player2Points-player1Points)>=2)
+        if (isWin1())
         {
             score = "Win for player2";
         }
 		return score;
 	}
 
+	private boolean isWin1() {
+		return player2Points>=4 && player1Points>=0 && (player2Points-player1Points)>=2;
+	}
+
+	private boolean isWin() {
+		return player1Points>=4 && player2Points>=0 && (player1Points-player2Points)>=2;
+	}
+
 	private String advantage() {
-		if (player1Points > player2Points && player2Points >= 3)
+		if (isAdvantage())
         {
             score = "Advantage player1";
         }
         
-        if (player2Points > player1Points && player1Points >= 3)
+        if (isAdvantage1())
         {
             score = "Advantage player2";
         }
 		return score;
 	}
 
+	private boolean isAdvantage1() {
+		return player2Points > player1Points && player1Points >= 3;
+	}
+
+	private boolean isAdvantage() {
+		return player1Points > player2Points && player2Points >= 3;
+	}
+
 	private String normal() {
-		if (player1Points != player2Points)
+		if (isNormal())
         {           
             score = getLiteral(player1Points) + "-" + getLiteral(player2Points);
         }
 		return score;
+	}
+
+	private boolean isNormal() {
+		return player1Points != player2Points;
 	}
 
 	private String getLiteral(int P1point) {
