@@ -19,23 +19,51 @@ public class TennisGame2 implements TennisGame
     public String getLiteralScore(){
     	String literalScore = "";
     	if (isNormal())		           
-		    literalScore = getLiteral(player1Points) + "-" + getLiteral(player2Points);		
+		    literalScore = getLiteralForNormal();		
 		if (isTie())		    
-		    literalScore = getLiteral(player1Points) + "-All";		
+		    literalScore = getLiteralForTie();		
 		if (isDeuce())
-			literalScore = "Deuce";
+			literalScore = getLiteralForDeuce();
 		if (isInAdvantageOver(player1Points,player2Points))		
-		    literalScore = "Advantage player1";				
+		    literalScore = getLiteralForAdvantage();				
 		if (isInAdvantageOver(player2Points,player1Points))		
-		    literalScore = "Advantage player2";		
+		    literalScore = getLiteralForAdvantage1();		
 		if (isWinnerOver( player1Points, player2Points))		
-		    literalScore = "Win for player1";		
+		    literalScore = getLiteralForWinner();		
 		if (isWinnerOver( player2Points,player1Points))		
-		    literalScore = "Win for player2";
+		    literalScore = getLiteralForWinner1();
 		
       
         return literalScore;
     }
+
+	private String getLiteralForWinner1() {
+		return "Win for player2";
+	}
+
+	private String getLiteralForWinner() {
+		return "Win for player1";
+	}
+
+	private String getLiteralForAdvantage1() {
+		return "Advantage player2";
+	}
+
+	private String getLiteralForAdvantage() {
+		return "Advantage player1";
+	}
+
+	private String getLiteralForDeuce() {
+		return "Deuce";
+	}
+
+	private String getLiteralForTie() {
+		return getLiteral(player1Points) + "-All";
+	}
+
+	private String getLiteralForNormal() {
+		return getLiteral(player1Points) + "-" + getLiteral(player2Points);
+	}
 	
 	private boolean isWinnerOver(int firstPlayerPoints, int secondPlayerPoints) {
 		return firstPlayerPoints>=4 && secondPlayerPoints>=0 && (firstPlayerPoints-secondPlayerPoints)>=2;
