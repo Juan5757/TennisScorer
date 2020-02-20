@@ -29,23 +29,21 @@ public class TennisGame2 implements TennisGame
     }
 
 	private String win() {
-		if (isWin())
+		if (isWinnerOver( player1Points, player2Points))
         {
             score = "Win for player1";
         }
-        if (isWin1())
+        if (isWinnerOver( player2Points,player1Points))
         {
             score = "Win for player2";
         }
 		return score;
 	}
 
-	private boolean isWin1() {
-		return player2Points>=4 && player1Points>=0 && (player2Points-player1Points)>=2;
-	}
+	
 
-	private boolean isWin() {
-		return player1Points>=4 && player2Points>=0 && (player1Points-player2Points)>=2;
+	private boolean isWinnerOver(int firstPlayerPoints, int secondPlayerPoints) {
+		return firstPlayerPoints>=4 && secondPlayerPoints>=0 && (firstPlayerPoints-secondPlayerPoints)>=2;
 	}
 
 	private String advantage() {
@@ -107,12 +105,7 @@ public class TennisGame2 implements TennisGame
 	private String tie() {
 		if (isTie())
         {
-            if (player1Points==0)
-                score = "Love";
-            if (player1Points==1)
-                score = "Fifteen";
-            if (player1Points==2)
-                score = "Thirty";
+            score = getLiteral(player1Points);
             score += "-All";
         }
 		return score;
